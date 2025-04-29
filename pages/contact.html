@@ -1,0 +1,25 @@
+
+<script>
+    function saluta() {
+        return({
+            who: "mia sorella"
+        })
+    }
+
+</script>
+
+<h1>Contattaci</h1>
+<div x-data="saluta()">
+    <p x-text="who"></p>
+</div>
+<a href="#">Mike</a>
+<a href="#">John</a>
+<a href="#">kevin</a>
+
+
+<style>
+    a{
+        color: red;
+    }
+</style>
+

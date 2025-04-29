@@ -1,0 +1,381 @@
+<style>
+    .page{
+        min-height: 100dvh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--main-bg);
+    }
+    main{
+        width: 85%;
+        height: 900px;
+    }
+    header{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header .title{
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    header .icon{
+        min-width: 70px;
+        min-height: 70px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    header .icon img{
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .list{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        gap: 20px;
+    }
+
+    .list-filters{
+        width: 100%;
+        height: fit-content;
+    }
+
+    .list .list-filters .title{
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .list .list-filters .cards{
+        width: fit-content;
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .list .list-filters .cards .card{
+        padding: 13px 25px;
+        font-size: 17px;
+        border-radius: 14px;
+        border: none;
+        background-color: var(--input-bg);
+        color: gray;
+    }
+
+    .list .list-filters .cards .card.sel{
+        background-color: var(--green);
+        color: white;
+    }
+
+    .big-cards{
+        width: 100%;
+        height: fit-content;
+    }
+
+
+    .big-card{
+        width: 290px;
+        height: fit-content;
+        background-color: #56BF6E;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 20px;
+        border-radius: 20px;
+
+    }
+
+    .big-card .top{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .big-card .top .icon{
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+    }
+
+    .big-card .top .right{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .big-card .top .right .title{
+        font-size: 15px;
+        color: white;
+        font-weight: 600;
+    }
+
+    .big-card .top .right .subtitle{
+        font-size: 14px;
+        color: white;
+        font-weight: 200;
+    }
+
+    .big-card .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .big-card .content .name{
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .big-card .content .description{
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .big-card .tags{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .big-card .tags .tag{
+        background-color: rgba(255, 255, 255, 0.24);
+        text-decoration: none;
+        color: white;
+        padding: 8px 18px;
+        border-radius: 10px;
+    }
+
+    .supermarket-container{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .supermarket-container .title{
+        font-weight: 600;
+        font-size: 25px;
+    }
+
+    .supermarket-container .cards{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .supermarket-container .card{
+        width: 100%;
+        height: 70px;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .supermarket-container .card .icon{
+        width: 45px;
+        height: 45px;
+        background-color: rgba(255, 0, 0, 0.404);
+        margin-left: 15px;
+        border-radius: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        overflow: hidden;
+    }
+
+    .supermarket-container .card .icon img{
+        width: 100%;
+        height: auto;
+    }
+
+    .supermarket-container .card .text{
+        line-height: 20px;
+        flex: 1;
+    }
+
+    .supermarket-container .card .text .name{
+        font-weight: 500;
+    }
+    .supermarket-container .card .text .distance{
+        color: rgba(0, 0, 0, 0.651);
+    }
+
+    .supermarket-container .card .buttons{
+        width: 80px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-right: 15px;
+    }
+
+    .supermarket-container .card .buttons a{
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 8px;
+        background-color: var(--orange);
+        color: white;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.267);
+    }
+
+    .menu a{
+        color: lightgray;
+        font-size: 20px;
+    }
+
+    .menu button{
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        background-color: var(--green);
+        color: white;
+        font-size: 22px;
+        bottom: 35px;
+    }
+
+    .menu a.sel{
+        color: var(--green);
+    }
+
+</style>
+<main>
+    <header>
+        <span class="title">Mangia meglio, spreca meno</span>
+        <div class="icon">
+            <img src="../assets/icons/carrot.svg" alt="">
+        </div>
+    </header>
+
+    <div class="list">
+        <div class="list-filters">
+            <span class="title">Liste già pronte</span>
+            <div class="cards">
+                <button class="card sel">All</button>
+                <button class="card">Carne</button>
+                <button class="card">Vegana</button>
+                <button class="card">Vegana</button>
+                <button class="card">Vegana</button>
+                <button class="card">Vegana</button>
+                <button class="card">Vegana</button>
+            </div>
+        </div>
+
+        <div class="big-cards">
+            <div class="big-card">
+                <div class="top">
+                    <div class="left">
+                        <div class="icon"></div>
+                    </div>
+                    <div class="right">
+                        <span class="title">Lista 1</span>
+                        <span class="subtitle">Lista già pronta</span>
+                    </div>
+                </div>
+                <div class="content">
+                    <span class="name">Spesa BBQ</span>
+                    <span class="description">Spesa per la tua grigliata con gli amici</span>
+                </div>
+                <div class="tags">
+                    <a href="#" class="tag">Carne</a>
+                    <a href="#" class="tag">Verdure</a>
+                    <a href="#" class="tag">Salse</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="supermarket-container">
+            <div class="title">Supermercati piu vicini</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">
+                        <img src="https://play-lh.googleusercontent.com/qhCk-KOnqgRbly6nRGwlRC9NP1g83zPKR2s5rX_jtRIjfMHh-0AkQoAMmb26hhAavA" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="name">Esselunga</div>
+                        <span class="distance">500m</span>
+                    </div>
+                    <div class="buttons">
+                        <a href="../"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Lidl_logo.png/960px-Lidl_logo.png" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="name">LIDL</div>
+                        <span class="distance">2km</span>
+                    </div>
+                    <div class="buttons">
+                        <a href="../"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</main>
+
+
+
+<div class="menu">
+    <a href="#" class="sel"><i class="fa-solid fa-house"></i></a>
+    <a href="#"><i class="fa-regular fa-file-lines"></i></a>
+    <a href="#"><i class="fa-solid fa-utensils"></i></a>
+    <a href="#"><i class="fa-solid fa-user-gear"></i></a>
+    <button class="add"><i class="fa-solid fa-plus"></i></button>
+</div>

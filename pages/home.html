@@ -1,0 +1,103 @@
+<script>
+document.addEventListener("contextmenu", event => event.preventDefault());
+
+document.querySelectorAll("a, button, img").forEach(element => {
+    element.addEventListener("pointerdown", event => {
+        if (event.pointerType === "touch") {
+            event.stopPropagation(); // Blocca il menu ma non il click
+        }
+    });
+});
+</script>
+
+<style>
+    body{
+        margin: 0;
+        width: 100%;
+        min-height: 100dvh;
+        display: flex;
+    }
+
+    .page{
+        background-color: var(--main-bg);
+    }
+
+    header{
+        width: 100%;
+        height: 48%;
+        /* background-color: red; */
+        background-image: url("../assets/images/wave.svg");
+        background-position: bottom;
+        background-size: cover;
+
+        position: relative;
+    }
+
+    header .corn{
+        position: absolute;
+        right: 0;
+        bottom: 30px;
+        width: 130px;
+    }
+
+    header .logo{
+        position: absolute;
+        left: 40px;
+        top: 20px;
+        width: 220px;
+    }
+
+    .content{
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content *{
+        width: 85%;
+    }
+
+    
+
+    .content .btn-white{
+        margin-top: 20px;
+    }
+
+    .content .title {
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .suggestion{
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .btn-icon{
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    
+
+</style>
+
+<header>
+    <img src="../assets/images/corn.svg" class="corn">
+    <img src="../assets/images/home_logo.png" class="logo">
+</header>
+
+<div class="content">
+    <span class="title">Benvenuto in EcoTote</span>
+    <a href="javascript:void(0)" class="btn btn-green" @click="navigate('login')">Registrati</a>
+    <a href="javascript:void(0)" class="btn btn-green" @click="navigate('user_home')">Accedi</a>
+
+    <span class="suggestion">Accedi con . . .</span>
+
+    <a href="javascript:void(0)" class="btn btn-white"><img src="../assets/icons/google.svg" class="btn-icon">Google</a>
+
+</div>
